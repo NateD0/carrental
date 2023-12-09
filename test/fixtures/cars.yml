@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_brand: MyString
+  year: MyString
+  vin: MyString
+  mileage: MyString
+  color: MyString
+
+two:
+  car_brand: MyString
+  year: MyString
+  vin: MyString
+  mileage: MyString
+  color: MyString

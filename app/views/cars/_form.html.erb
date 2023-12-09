@@ -1,0 +1,73 @@
+<%= form_with(model: car) do |form| %>
+  <% if car.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+        <% car.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <% form.label :car_brand, style: "display: block" %>
+    <%= form.text_field :car_brand, class:"form-control", placeholder:"Car Brand Name" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :car_model, style: "display: block" %>
+    <%= form.text_field :car_model, class:"form-control", placeholder:"Car Model Name" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :class_type, style: "display: block" %>
+    <%= form.text_field :class_type, class:"form-control", placeholder:"Class Type" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :year, style: "display: block" %>
+    <%= form.text_field :year, class:"form-control", placeholder:"Year Model" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :vin, style: "display: block" %>
+    <%= form.text_field :vin, class:"form-control", placeholder:"Vin Number" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :mileage, style: "display: block" %>
+    <%= form.text_field :mileage, class:"form-control", placeholder:"Mileage" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :color, style: "display: block" %>
+    <%= form.text_field :color, class:"form-control", placeholder:"Color" %>
+  </div>
+
+  <br>
+
+  <div class="field form-group">
+    <% form.label :user_id, id: :car_user_id, style: "display: block" %>
+    <%= form.number_field :user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+  <br>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-success' %>
+  </div>
+<% end %>

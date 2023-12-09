@@ -1,0 +1,91 @@
+
+
+<% if user_signed_in? %>
+
+<h1>Cars List</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Car Brand And Model</th>
+      
+      <th>Class Type</th>
+      <th>Year</th>
+      <th>Vin</th>
+      <th>Mileage</th>
+      <th>Color</th>
+      <%# <th>User Id</th> %>
+      <th>   </th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <% if car.user == current_user %>
+      <tr>
+        <td>
+            <%= link_to "#{car.car_brand} #{car.car_model}", car if car.car_brand.present? && car.car_model.present? %>
+        </td>
+        
+        <td><%= car.class_type %></td>
+        <td><%= car.year %></td>
+        <td><%= car.vin %></td>
+        <td><%= car.mileage %></td>
+        <td><%= car.color %></td>
+        <%# <td><%=car.user_id %>
+        <%# <td><%= link_to "Show", car, class: "btn btn-secondary"</td>%>  
+
+
+
+        
+        <%# <td><%= link_to "Edit", edit_car_path(car), class: "btn btn-secondary" %>
+        <td><%= button_to 'Delete', car, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+       
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to "New car", new_car_path, class: "btn btn-secondary" %>
+
+<% else %>
+
+<h1>Cars List</h1>
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Car Brand And Model</th>
+        <th>Class Type</th>
+        <th>Year</th>
+        <th>Vin</th>
+        <th>Mileage</th>
+        <th>Color</th>
+        <%# <th>User Id</th> %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cars.each do |car| %>
+        <tr>
+          <td>
+            <%= link_to "#{car.car_brand} #{car.car_model}", car if car.car_brand.present? && car.car_model.present? %>
+          </td>
+          <td><%= car.class_type %></td>
+          <td><%= car.year %></td>
+          <td><%= car.vin %></td>
+          <td><%= car.mileage %></td>
+          <td><%= car.color %></td>
+          <%# <td><%= car.user_id %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <p>You are not Admin! <%= link_to "Sign In", new_user_session_path %> to make changes.</p>
+
+<% end %>

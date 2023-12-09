@@ -1,0 +1,33 @@
+
+
+<div class="jumbotron">
+  <h1 class="display-4"> 
+    <%= @car.car_brand %> 
+    <%= @car.car_model %>
+    
+  </h1>
+  <p class="lead">
+   Car Model: <%= @car.class_type %>
+    <br>
+   Car Year: <%= @car.year %>
+    <br>
+   Vin Number: <%= @car.vin %>
+    <br>
+   Mileage: <%= @car.mileage %>
+    <br>
+   Color: <%= @car.color %>
+
+
+  </p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  
+
+  <%= link_to 'Edit', edit_car_path(@car), class:"btn btn-secondary" %>
+  <%= link_to 'Back', cars_path, class:"btn btn-secondary" %>
+</div>
+
+<br>
+
+  <%= button_to "Destroy this car", @car, method: :delete %>
+</div>
