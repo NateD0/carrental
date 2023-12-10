@@ -14,6 +14,10 @@
       <th>Vin</th>
       <th>Mileage</th>
       <th>Color</th>
+      <th>1 Day</th>
+      <th>3 Days</th>
+      <th>5 Days</th>
+      <th>7 Days</th>
       <%# <th>User Id</th> %>
       <th>   </th>
       
@@ -33,6 +37,10 @@
         <td><%= car.vin %></td>
         <td><%= car.mileage %></td>
         <td><%= car.color %></td>
+        <td><%= car.price %></td>
+        <td><%= car.day3 %></td>
+        <td><%= car.day5 %></td>
+        <td><%= car.day7 %></td>
         <%# <td><%=car.user_id %>
         <%# <td><%= link_to "Show", car, class: "btn btn-secondary"</td>%>  
 
@@ -64,6 +72,10 @@
         <th>Vin</th>
         <th>Mileage</th>
         <th>Color</th>
+        <th>1 Day</th>
+        <th>3 Days</th>
+        <th>5 Days</th>
+        <th>7 Days</th>
         <%# <th>User Id</th> %>
       </tr>
     </thead>
@@ -78,6 +90,10 @@
           <td><%= car.vin %></td>
           <td><%= car.mileage %></td>
           <td><%= car.color %></td>
+          <td><%= car.price %></td>
+          <td><%= car.day3 %></td>
+          <td><%= car.day5 %></td>
+          <td><%= car.day7 %></td>
           <%# <td><%= car.user_id %>
         </tr>
       <% end %>

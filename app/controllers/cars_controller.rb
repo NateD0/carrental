@@ -6,8 +6,9 @@ class CarsController < ApplicationController
 
   # GET /cars or /cars.json
   def index
-    @cars = Car.all
+    @cars = Car.all 
   end
+
 
   # GET /cars/1 or /cars/1.json
   def show
@@ -68,7 +69,7 @@ class CarsController < ApplicationController
     redirect_to cars_path, notice: "Not Authorized To Edit The Cars" if @car.nil?
   end
 
-
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -78,6 +79,6 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.require(:car).permit(:car_brand, :car_model, :class_type, :year, :vin, :mileage, :color, :user_id)
+      params.require(:car).permit(:car_brand, :car_model, :class_type, :year, :vin, :mileage, :color, :user_id, :price, :day3, :day5, :day7)
     end
 end

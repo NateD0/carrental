@@ -16,56 +16,81 @@
     <%= form.text_field :car_brand, class:"form-control", placeholder:"Car Brand Name" %>
   </div>
 
-  <br>
+  <br/>
 
   <div class="field form-group">
     <% form.label :car_model, style: "display: block" %>
     <%= form.text_field :car_model, class:"form-control", placeholder:"Car Model Name" %>
   </div>
 
-  <br>
+  <br/>
 
   <div class="field form-group">
     <% form.label :class_type, style: "display: block" %>
     <%= form.text_field :class_type, class:"form-control", placeholder:"Class Type" %>
   </div>
 
-  <br>
+  <br/>
 
   <div class="field form-group">
     <% form.label :year, style: "display: block" %>
     <%= form.text_field :year, class:"form-control", placeholder:"Year Model" %>
   </div>
 
-  <br>
+  <br/>
 
   <div class="field form-group">
     <% form.label :vin, style: "display: block" %>
-    <%= form.text_field :vin, class:"form-control", placeholder:"Vin Number" %>
+    <%= form.text_field :vin, class:"form-control", placeholder:"Vin Number " %>
   </div>
 
-  <br>
+  <br/>
 
   <div class="field form-group">
     <% form.label :mileage, style: "display: block" %>
     <%= form.text_field :mileage, class:"form-control", placeholder:"Mileage" %>
   </div>
 
-  <br>
+  <br/>
 
   <div class="field form-group">
     <% form.label :color, style: "display: block" %>
     <%= form.text_field :color, class:"form-control", placeholder:"Color" %>
   </div>
 
-  <br>
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :price, style: "display: block" %>
+    <%= form.text_field :price, class:"form-control", placeholder:"1 Day" %>
+  </div>
+
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :day3, style: "display: block" %>
+    <%= form.text_field :day3, class:"form-control", placeholder:"3 Days" %>
+  </div>
+
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :day5, style: "display: block" %>
+    <%= form.text_field :day5, class:"form-control", placeholder:"5 Days" %>
+  </div>
+
+
+  <br/>
+
+  <div class="field form-group">
+    <% form.label :day7, style: "display: block" %>
+    <%= form.text_field :day7, class:"form-control", placeholder:"7 Days" %>
+  </div>
 
   <div class="field form-group">
     <% form.label :user_id, id: :car_user_id, style: "display: block" %>
     <%= form.number_field :user_id, class:"form-control", value: current_user.id, type: :hidden %>
   </div>
-
-  <br>
 
   <div class="actions">
     <%= form.submit class:'btn btn-success' %>

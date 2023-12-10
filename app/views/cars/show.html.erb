@@ -16,11 +16,16 @@
    Mileage: <%= @car.mileage %>
     <br>
    Color: <%= @car.color %>
-
-
+    <br>
+    1 Day Cost: <%= @car.price %>
+    <br>
+    3 Days Cost: <%= @car.day3 %>
+    <br>
+    5 Days Cost: <%= @car.day5 %>
+    <br>
+    7 Days Cost: <%= @car.day7 %>
   </p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   
 
   <%= link_to 'Edit', edit_car_path(@car), class:"btn btn-secondary" %>
