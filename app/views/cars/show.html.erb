@@ -1,21 +1,18 @@
-
-
 <div class="jumbotron">
   <h1 class="display-4"> 
     <%= @car.car_brand %> 
-    <%= @car.car_model %>
-    
+    <%= @car.car_model %>   
   </h1>
   <p class="lead">
-   Car Model: <%= @car.class_type %>
+    Car Model: <%= @car.class_type %>
     <br>
-   Car Year: <%= @car.year %>
+    Car Year: <%= @car.year %>
     <br>
-   Vin Number: <%= @car.vin %>
+    Vin Number: <%= @car.vin %>
     <br>
-   Mileage: <%= @car.mileage %>
+    Mileage: <%= @car.mileage %>
     <br>
-   Color: <%= @car.color %>
+    Color: <%= @car.color %>
     <br>
     1 Day Cost: <%= @car.price %>
     <br>
@@ -24,15 +21,16 @@
     5 Days Cost: <%= @car.day5 %>
     <br>
     7 Days Cost: <%= @car.day7 %>
+    <br>
+    <% if @car.image.attached? %>
+      <p><%= image_tag(@car.image, style: "") %></p>
+    <% end %>
   </p>
   <hr class="my-4">
   
-
-  <%= link_to 'Edit', edit_car_path(@car), class:"btn btn-secondary" %>
-  <%= link_to 'Back', cars_path, class:"btn btn-secondary" %>
-</div>
-
-<br>
-
+  <%= link_to 'Edit', edit_car_path(@car), class: "btn btn-secondary" %>
+  <%= link_to 'Back', cars_path, class: "btn btn-secondary" %>
+  <br><br/>
+  
   <%= button_to "Destroy this car", @car, method: :delete %>
 </div>

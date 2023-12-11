@@ -1,67 +1,115 @@
-
-
 <% if user_signed_in? %>
 
-<h1>Cars List</h1>
+  <% if current_user.admin? %>
+    <!-- Admin Dashboard -->
+    <h1>Admin Dashboard</h1>
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Car Brand And Model</th>
+          <th>Class Type</th>
+          <th>Year</th>
+          <th>Vin</th>
+          <th>Mileage</th>
+          <th>Color</th>
+          <th>1Day</th>
+          <th>3Days</th>
+          <th>5Days</th>
+          <th>7Days</th>
+          <!-- <th>User Id</th> -->
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cars.each do |car| %>
+          <tr>
+            <td>
+              <%= link_to "#{car.car_brand} #{car.car_model}", car if car.car_brand.present? && car.car_model.present? %>
+            </td>
+            <td><%= car.class_type %></td>
+            <td><%= car.year %></td>
+            <td><%= car.vin %></td>
+            <td><%= car.mileage %></td>
+            <td><%= car.color %></td>
+            <td><%= car.price %></td>
+            <td><%= car.day3 %></td>
+            <td><%= car.day5 %></td>
+            <td><%= car.day7 %></td>
+            <!-- <td><%= car.user_id %></td> -->
+            <!-- <td><%= link_to "Show", car, class: "btn btn-secondary" %></td> -->
+            <!-- <td><%= link_to "Edit", edit_car_path(car), class: "btn btn-secondary" %></td> -->
+            <td><%= button_to 'Delete', car, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<table class="table table-striped table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>Car Brand And Model</th>
-      
-      <th>Class Type</th>
-      <th>Year</th>
-      <th>Vin</th>
-      <th>Mileage</th>
-      <th>Color</th>
-      <th>1 Day</th>
-      <th>3 Days</th>
-      <th>5 Days</th>
-      <th>7 Days</th>
-      <%# <th>User Id</th> %>
-      <th>   </th>
-      
-      
-    </tr>
-  </thead>
-  <tbody>
-    <% @cars.each do |car| %>
-      <% if car.user == current_user %>
-      <tr>
-        <td>
-            <%= link_to "#{car.car_brand} #{car.car_model}", car if car.car_brand.present? && car.car_model.present? %>
-        </td>
-        
-        <td><%= car.class_type %></td>
-        <td><%= car.year %></td>
-        <td><%= car.vin %></td>
-        <td><%= car.mileage %></td>
-        <td><%= car.color %></td>
-        <td><%= car.price %></td>
-        <td><%= car.day3 %></td>
-        <td><%= car.day5 %></td>
-        <td><%= car.day7 %></td>
-        <%# <td><%=car.user_id %>
-        <%# <td><%= link_to "Show", car, class: "btn btn-secondary"</td>%>  
+    <br>
 
+    <!-- Link to add a new car -->
+    <%= link_to "New car", new_car_path, class: "btn btn-secondary" %>
 
+  <% else %>
 
-        
-        <%# <td><%= link_to "Edit", edit_car_path(car), class: "btn btn-secondary" %>
-        <td><%= button_to 'Delete', car, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
-       
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-<br>
+    <!-- Regular User View - Cars List -->
+    <h1>Cars List</h1>
 
-<%= link_to "New car", new_car_path, class: "btn btn-secondary" %>
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Car Brand And Model</th>
+          <th>Class Type</th>
+          <th>Year</th>
+          <th>Vin</th>
+          <th>Mileage</th>
+          <th>Color</th>
+          <th>1Day</th>
+          <th>3Days</th>
+          <th>5Days</th>
+          <th>7Days</th>
+          <!-- <th>User Id</th> -->
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cars.each do |car| %>
+          <tr>
+            <td>
+              <%= link_to "#{car.car_brand} #{car.car_model}", car if car.car_brand.present? && car.car_model.present? %>
+            </td>
+            <td><%= car.class_type %></td>
+            <td><%= car.year %></td>
+            <td><%= car.vin %></td>
+            <td><%= car.mileage %></td>
+            <td><%= car.color %></td>
+            <td><%= car.price %></td>
+            <td><%= car.day3 %></td>
+            <td><%= car.day5 %></td>
+            <td><%= car.day7 %></td>
+            <!-- <td><%= car.user_id %></td> -->
+            <!-- <td><%= link_to "Show", car, class: "btn btn-secondary" %></td> -->
+            <!-- <td><%= link_to "Edit", edit_car_path(car), class: "btn btn-secondary" %></td> -->
+            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+  
+  <% end %>
+
+  <!-- Common content for both admin and regular users -->
+  <br><br/>
+
+  <%= current_user.role %>
+  <%= link_to "logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete} %>
 
 <% else %>
 
-<h1>Cars List</h1>
+  <!-- Non-signed-in users view -->
+  <h1>Cars List</h1>
 
   <table class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
@@ -72,11 +120,12 @@
         <th>Vin</th>
         <th>Mileage</th>
         <th>Color</th>
-        <th>1 Day</th>
-        <th>3 Days</th>
-        <th>5 Days</th>
-        <th>7 Days</th>
-        <%# <th>User Id</th> %>
+        <th>1Day</th>
+        <th>3Days</th>
+        <th>5Days</th>
+        <th>7Days</th>
+        <!-- <th>User Id</th> -->
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -94,7 +143,7 @@
           <td><%= car.day3 %></td>
           <td><%= car.day5 %></td>
           <td><%= car.day7 %></td>
-          <%# <td><%= car.user_id %>
+          <!-- <td><%= car.user_id %></td> -->
         </tr>
       <% end %>
     </tbody>
@@ -102,6 +151,11 @@
 
   <br>
 
-  <p>You are not Admin! <%= link_to "Sign In", new_user_session_path %> to make changes.</p>
+  <% if current_user %>
+    <%= current_user.role %>
+    <%= link_to "logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete} %>
+  <% else %>
+    <p>You are not Admin! <%= link_to "Login", new_user_session_path %> to make changes.</p>
+  <% end %>
 
 <% end %>

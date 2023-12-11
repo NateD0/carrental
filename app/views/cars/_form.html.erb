@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
+  <div class="field ">
+    <%= form.file_field :image %>
+  </div>
+
+  <br/>
+
   <div class="field form-group">
     <% form.label :car_brand, style: "display: block" %>
     <%= form.text_field :car_brand, class:"form-control", placeholder:"Car Brand Name" %>
   </div>
+
 
   <br/>
 
